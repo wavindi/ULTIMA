@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { Moon, Sun, ArrowRight, Eye, Brain, LayoutDashboard } from "lucide-react";
+import { Moon, Sun, ArrowRight, Eye, Brain} from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
 
 const imgImageSummaPadelSportsDashboard = "https://images.unsplash.com/photo-1657704358775-ed705c7388d2?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -99,7 +99,6 @@ export function HomePage() {
                   <Moon className="w-5 h-5 text-gray-700" />
                 )}
               </button>
-          <>
               <button
                 className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-white transition-colors duration-300 font-['Poppins',sans-serif] font-semibold text-[14px]"
               >
@@ -111,7 +110,18 @@ export function HomePage() {
               >
                 Sign Up
               </button>
-              </>
+              {/* Nouveau Bouton Live Matches */}
+              <button
+                className="flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300 group"
+               >
+               <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+               </span>
+               <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
+                Live Matches
+               </span>
+             </button>
             </div>
           </div>
         </div>

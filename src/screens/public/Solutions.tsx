@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Moon, Sun, ArrowRight, Check, LayoutDashboard } from "lucide-react";
+import { Moon, Sun, ArrowRight, Check} from "lucide-react";
 import { ImageWithFallback } from "../../components/Design/ImageWithFallback";
 import { useTheme } from "../../styles/useTheme";
 
@@ -21,8 +21,8 @@ export function Solutions() {
       title: "Padel Sports Dashboard",
       description:
         "Comprehensive court management and analytics platform for padel facilities. Monitor live matches, track player performance, and optimize facility operations.",
-      color: "#10B981", // Émeraude pour light mode
-      darkColor: "#39FF14", // Néon vert pour dark mode
+      color: "#10B981", 
+      darkColor: "#39FF14", 
       image: "https://images.unsplash.com/photo-1646651105454-6c167ea6f83b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: [
         "Live match monitoring",
@@ -39,8 +39,8 @@ export function Solutions() {
       title: "Smart Hydration Station",
       description:
         "On-site hydration solution delivering flavored, low-calorie beverages designed for active environments. Enhance user experience while maintaining facility standards.",
-      color: "#3B82F6", // Bleu pour light mode
-      darkColor: "#00E5FF", // Bleu néon pour dark mode
+      color: "#3B82F6", 
+      darkColor: "#00E5FF", 
       image: "https://images.unsplash.com/flagged/photo-1553353799-a992825b0d07?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       features: [
         "Multiple flavor options",
@@ -132,7 +132,7 @@ export function Solutions() {
                   <Moon className="w-5 h-5 text-gray-700" />
                 )}
               </button>
-          <>
+          
               <button
                 className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-white transition-colors duration-300 font-['Poppins',sans-serif] font-semibold text-[14px]"
               >
@@ -144,7 +144,18 @@ export function Solutions() {
               >
                 Sign Up
               </button>
-              </>
+              {/* Nouveau Bouton Live Matches */}
+              <button
+                className="flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300 group"
+               >
+               <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+               </span>
+               <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
+                Live Matches
+               </span>
+             </button>
             
             </div>
           </div>

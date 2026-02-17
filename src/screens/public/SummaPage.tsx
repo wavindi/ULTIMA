@@ -224,7 +224,7 @@ export function SummaPage() {
                   <Moon className="w-5 h-5 text-gray-700" />
                 )}
               </button>
-          <>
+          
               <button
                 className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-white transition-colors duration-300 font-['Poppins',sans-serif] font-semibold text-[14px]"
               >
@@ -236,7 +236,18 @@ export function SummaPage() {
               >
                 Sign Up
               </button>
-              </>
+              {/* Nouveau Bouton Live Matches */}
+              <button
+                className="flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300 group"
+               >
+               <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+               </span>
+               <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
+                Live Matches
+               </span>
+             </button>
             </div>
           </div>
         </div>
