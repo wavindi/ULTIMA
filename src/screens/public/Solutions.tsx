@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Moon, Sun, ArrowRight, Check} from "lucide-react";
+import { Moon, Sun, ArrowRight, Check, Mail, Phone} from "lucide-react";
 import { ImageWithFallback } from "../../components/Design/ImageWithFallback";
 import { useTheme } from "../../styles/useTheme";
+import { toast, Toaster } from 'sonner'; 
+
 
 export function Solutions() {
 
@@ -66,6 +68,39 @@ export function Solutions() {
   const getSolutionColor = (solution: typeof solutions[0]) => {
     return isDark ? solution.darkColor : solution.color;
   };
+
+
+  const handleContactClick = () => {
+  toast.custom((t) => (
+    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[300px]">
+      <div className="flex items-center justify-between">
+        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[18px]">Contact Details</h3>
+        <button onClick={() => toast.dismiss(t)} className="text-gray-400 hover:text-gray-600">✕</button>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center">
+            <Phone className="w-4 h-4 text-emerald-600 dark:text-[#39FF14]" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium">+216 96 094 772</span>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center">
+            <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium">Ultima.contacus@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  ), {
+    duration: 5000,
+    position: 'bottom-right',
+  });
+};
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-black transition-colors duration-300">
       {/* Navigation */}
@@ -346,13 +381,14 @@ export function Solutions() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a
-                href="/#contact"
+
+              <Toaster />
+              <button onClick={handleContactClick}
                 className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[56px] px-8 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)]"
               >
                 Contact sales
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </button>
               <button
                 className="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 border-2 border-gray-300 dark:border-white/20 h-[56px] px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white"
               >
@@ -415,24 +451,41 @@ export function Solutions() {
               </ul>
             </div>
 
-            {/* Follow Us Column */}
+            {/* Contact Column */}
             <div>
               <h4 className="font-['Poppins',sans-serif] font-semibold text-[14px] text-white mb-4">
-                Follow us
+                Contact
               </h4>
               <ul className="space-y-2">
+               <ul className="space-y-4"> 
+               
                 <li>
-                  <a
-                    href="/#contact"
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Contact
-                  </a>
-                </li>
-                
+                 <a
+                    href="tel:+21696094772"
+                    className="flex items-center gap-2 font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                   <Phone className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" />
+                   <span>96 094 772</span>
+                 </a>
+               </li>
+
+               
+               <li>
+                 <a
+                   href="https://mail.google.com/mail/?view=cm&fs=1&to=Ultima.contacus@gmail.com"
+                   target="_blank"
+                    rel="noopener noreferrer"
+                   className="flex items-center gap-2 font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                   <Mail className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                   <span>Ultima.contacus@gmail.com</span>
+                 </a>
+               </li>
+               </ul>
               </ul>
             </div>
           </div>
+
 
           {/* Copyright */}
           <div className="pt-8 border-t border-gray-700 dark:border-white/10 text-center">

@@ -3,11 +3,13 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { Moon, Sun, ArrowRight, Check, Activity, Zap, LayoutDashboard, Smartphone, Shield, Play, RefreshCw, MonitorPlay, Monitor, Globe, Users, AlertCircle, Sliders, Award, Dribbble, Trophy, Dumbbell } from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
+import { toast, Toaster } from 'sonner'; 
+import { Mail, Phone } from 'lucide-react';
 
 
 // Images
 const padelCourtImage = "https://images.unsplash.com/photo-1693517235862-a1b8c3323efb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWRlbCUyMGNvdXJ0JTIwc3BvcnQlMjBmYWNpbGl0eSUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NzAxMzkxNjB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-const scoringSystemImage = "https://media.discordapp.net/attachments/1466386538660364517/1471874891191160973/scoreboard.jpg?ex=699085d0&is=698f3450&hm=109906dc67a2efe87eb11621e7796e85b9a3472162f2661a7802b40d32accf94&=&format=webp&width=1045&height=779";
+const scoringSystemImage = "https://wescorepadel.com/wp-content/uploads/2023/03/2023-03-06-JPG-08-Padel-WeScore-scaled-e1680015141407-1024x763.jpg";
 const athleteImage = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export function SummaPage() {
@@ -158,6 +160,38 @@ export function SummaPage() {
       description: "Reliable hardware and software engineered for high-traffic operations",
     },
   ];
+
+  const handleContactClick = () => {
+  toast.custom((t) => (
+    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[300px]">
+      <div className="flex items-center justify-between">
+        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[18px]">Contact Details</h3>
+        <button onClick={() => toast.dismiss(t)} className="text-gray-400 hover:text-gray-600">✕</button>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center">
+            <Phone className="w-4 h-4 text-emerald-600 dark:text-[#39FF14]" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium">+216 96 094 772</span>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center">
+            <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium">Ultima.contacus@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  ), {
+    duration: 5000,
+    position: 'bottom-right',
+  });
+};
+
+
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       {/* Navigation */}
@@ -314,7 +348,8 @@ export function SummaPage() {
               >
                 Request a demo
               </button>
-              <button
+              <Toaster />
+              <button onClick={handleContactClick}
                 className="bg-transparent hover:bg-gray-100 dark:hover:bg-white/10 h-[60px] px-12 rounded-full border-2 border-gray-300 dark:border-white/40 hover:border-emerald-500 dark:hover:border-[#39FF14] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white"
               >
                 Contact sales
@@ -943,14 +978,6 @@ export function SummaPage() {
                     About us
                   </button>
                 </li>
-                <li>
-                  <p
-                  
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Our Localisation
-                  </p>
-                </li>
               </ul>
             </div>
 
@@ -972,17 +999,35 @@ export function SummaPage() {
 
             <div>
               <h4 className="font-['Poppins',sans-serif] font-semibold text-[14px] text-white mb-4">
-                Follow us
+                Contact
               </h4>
-               <ul className="space-y-2">
+              <ul className="space-y-2">
+               <ul className="space-y-4"> 
+               
+                <li>
+                 <a
+                    href="tel:+21696094772"
+                    className="flex items-center gap-2 font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                   <Phone className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" />
+                   <span>96 094 772</span>
+                 </a>
+               </li>
+
+               
                <li>
-                  <p
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Contact
-                  </p>
-                </li>
-                </ul>
+                 <a
+                   href="https://mail.google.com/mail/?view=cm&fs=1&to=Ultima.contacus@gmail.com"
+                   target="_blank"
+                    rel="noopener noreferrer"
+                   className="flex items-center gap-2 font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300 group"
+                    >
+                   <Mail className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                   <span>Ultima.contacus@gmail.com</span>
+                 </a>
+               </li>
+               </ul>
+              </ul>
             </div>
           </div>
 
