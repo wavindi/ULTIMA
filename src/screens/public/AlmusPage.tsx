@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Moon, Sun, ArrowRight, Dumbbell,Trophy, Citrus, Droplets, Leaf, Zap, Flower2 } from "lucide-react";
+import { Moon, Sun, ArrowRight, Dumbbell,Trophy, Citrus, Leaf, Cherry, Palmtree } from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
 import { toast, Toaster } from 'sonner'; 
 import { Mail, Phone } from 'lucide-react';
@@ -9,13 +9,6 @@ import { Mail, Phone } from 'lucide-react';
 const imgImageAlmusSmartHydrationStation = "https://images.unsplash.com/photo-1517093911940-08cb5b3952e7?q=80&w=744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dpg";
 const imgImageAlmusInstalledInProfessionalTrainingFacility = "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-
-const environment = [
-  { name: "Gyms", description: "Fitness Centers", icon: Dumbbell },
-  { name: "Training Facilities", description: "Professional sports", icon: Droplets },
-  { name: "Sports Clubs", description: "Competitive environments", icon: Trophy },
-  { name: "Wellness Spaces", description: "Sports venues", icon: Flower2 },
-];
 
 const flavors = [
   { 
@@ -27,14 +20,14 @@ const flavors = [
   { 
     name: "Red Fruits", 
     desc: "Sweet berry blend", 
-    color: "bg-red-600",
-    icon: Droplets 
+    color: "bg-red-800",
+    icon: Cherry 
   },
   { 
     name: "Tropical Mix", 
     desc: "Exotic fruit fusion", 
     color: "bg-orange-500",
-    icon: Zap 
+    icon: Palmtree
   },
   { 
     name: "Mint ", 
@@ -563,60 +556,6 @@ export function AlmusPage() {
   </div>
 </section>
 
-        {/* Built for Active Environments Section */}
-<section className="relative min-h-[70vh] py-24 bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
-  {/* Background Blurs - On garde vos fonds identiques */}
-  <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[365.33px] rounded-full w-[500px] h-[500px] top-[181.02px]" />
-
-  <div className="max-w-[936px] mx-auto px-6 relative text-center">
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="font-['Playfair_Display',serif] font-bold text-[62px] leading-[61.6px] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
-      style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
-    >
-      Built for active environments
-    </motion.h2>
-    <p className="font-['Poppins',sans-serif] text-[24px] leading-[34px] text-gray-600 dark:text-white/70 mb-16 max-w-[761px] mx-auto transition-colors duration-300">
-      ALMUS is designed for facilities where hydration is critical to
-      performance and member experience.
-    </p>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-      {environment.map((env, index) => {
-        const Icon = env.icon;
-        return (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 * index }}
-            className="group relative bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[24px] p-8 shadow-lg dark:shadow-[0px_8px_32px_0px_rgba(0,0,0,0.4)] hover:scale-105 hover:border-blue-400 transition-all duration-300 flex flex-col items-center justify-center min-h-[220px]"
-          >
-            {/* Conteneur de l'icône */}
-            <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-400/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Icon className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-            </div>
-
-            <div className="text-center">
-              <h3 className="font-['Poppins',sans-serif] font-semibold text-[18px] text-gray-900 dark:text-white mb-2">
-                {env.name}
-              </h3>
-              <p className="font-['Poppins',sans-serif] text-[13px] text-gray-500 dark:text-white/50">
-                {env.description}
-              </p>
-            </div>
-            
-            {/* Effet de brillance subtil au survol */}
-            <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-blue-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-          </motion.div>
-        );
-      })}
-    </div>
-  </div>
-</section>
 
       {/* Bring ALMUS to Your Facility Section */}
       <section id="almus-cta" className="relative min-h-[70vh] pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
