@@ -9,7 +9,7 @@ import { Mail, Phone } from 'lucide-react';
 
 // Images
 const padelCourtImage = "https://images.unsplash.com/photo-1693517235862-a1b8c3323efb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWRlbCUyMGNvdXJ0JTIwc3BvcnQlMjBmYWNpbGl0eSUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NzAxMzkxNjB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-const scoringSystemImage = "https://wescorepadel.com/wp-content/uploads/2023/03/2023-03-06-JPG-08-Padel-WeScore-scaled-e1680015141407-1024x763.jpg";
+const scoringSystemImage = "assets/images/scoreboard.webp";
 const athleteImage = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export function SummaPage() {
