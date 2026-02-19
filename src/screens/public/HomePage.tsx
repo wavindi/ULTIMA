@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { motion } from "motion/react";
-import { Moon, Sun, ArrowRight, Eye, Brain} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Moon, Sun, ArrowRight, Eye, Brain, Menu, X} from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
 import { toast, Toaster } from 'sonner'; // Importez Sonner
 import { Mail, Phone } from 'lucide-react';
@@ -12,7 +12,7 @@ const imgImageAlmusSmartDispenserStation = "https://www.thoughtco.com/thmb/BVnoD
 export function HomePage() {
 
   const { isDark, setIsDark } = useTheme();
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -35,6 +35,38 @@ export function HomePage() {
     });
   };
 
+
+  const handleContactClick = () => {
+  toast.custom((t) => (
+    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-4 sm:p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[280px] sm:min-w-[300px] max-w-[90vw]">
+      <div className="flex items-center justify-between">
+        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[16px] sm:text-[18px]">Contact Details</h3>
+        <button onClick={() => toast.dismiss(t)} className="text-gray-400 hover:text-gray-600">✕</button>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center shrink-0">
+            <Phone className="w-4 h-4 text-emerald-600 dark:text-[#39FF14]" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">+216 96 094 772</span>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center shrink-0">
+            <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">Ultima.contacus@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  ), {
+    duration: 5000,
+    position: 'bottom-right',
+  });
+};
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-gray-900 transition-colors duration-300">
       {/* Navigation */}
@@ -44,73 +76,26 @@ export function HomePage() {
         transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-[rgba(10,14,26,0.8)] backdrop-blur-xl border-b border-gray-200 dark:border-white/10 transition-colors duration-300"
       >
-        <div className="max-w-[1096px] mx-auto px-6 py-4">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               to="/"
-              className="font-['Arial',sans-serif] font-bold text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
+              className="font-['Arial',sans-serif] font-bold text-[20px] sm:text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
             >
               ULTIMA
             </Link>
 
             {/* Center Links */}
             <div className="hidden md:flex items-center gap-8">
-              <button
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                About
+              <Link to="/solutions" className="text-sm font-medium hover:text-blue-500 transition-colors">Solutions</Link>
+              <Link to="/summa" className="text-sm font-medium hover:text-blue-500 transition-colors">SUMMA</Link>
+              <Link to="/almus" className="text-sm font-medium hover:text-blue-500 transition-colors">ALMUS</Link>
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
               </button>
-              <a
-                href="#contact"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                Contact
-              </a>
-              <Link
-                to="/solutions"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                Solutions
-              </Link>
-              <Link
-                to="/summa"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                SUMMA
-              </Link>
-              <Link
-                to="/almus"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                ALMUS
-              </Link>
-              
-            </div>
-
-            {/* Right Side */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300"
-                aria-label="Toggle dark mode"
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
-              <button
-                className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-white transition-colors duration-300 font-['Poppins',sans-serif] font-semibold text-[14px]"
-              >
-                Login
-              </button>
-
-              <button
-                className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]"
-              >
-                Sign Up
+              <button className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]">
+                Get Started
               </button>
               {/* Nouveau Bouton Live Matches */}
               <button
@@ -125,29 +110,113 @@ export function HomePage() {
                </span>
              </button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+            >
+              {isMenuOpen ? <X className="w-6 h-6 text-gray-900 dark:text-white" /> : <Menu className="w-6 h-6 text-gray-900 dark:text-white" />}
+            </button>
           </div>
         </div>
-      </motion.nav>
 
-      {/* Hero Section - Choose Your Experience */}
-      <section className="relative min-h-screen pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden border-t border-gray-200 dark:border-white/10 bg-white dark:bg-[#0A0E1A] overflow-hidden"
+            >
+              <div className="px-6 py-6 space-y-4">
+                <Link to="/solutions" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">Solutions</Link>
+                <Link to="/summa" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">SUMMA</Link>
+                <Link to="/almus" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">ALMUS</Link>
+                
+                <div className="pt-4 space-y-3 border-t border-gray-200 dark:border-white/10">
+                  <button onClick={() => setIsDark(!isDark)} className="w-full flex items-center justify-center gap-2 p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                    {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+                    <span className="text-sm font-medium">{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                  </button>
+                  <button className="w-full bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]">
+                    Get Started
+                  </button>
+                  <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                    </span>
+                    <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
+                      Live Matches
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+      
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 md:pt-48 md:pb-32 px-4 sm:px-6 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+        <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[10%]" />
+        <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[5%]" />
+        <div className="max-w-[1096px] mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[36px] md:text-[64px] lg:text-[82px] font-bold leading-[1.1] text-gray-900 dark:text-white mb-8"
+          >
+            Experience the  <br className="hidden md:block" />
+            <span className="text-blue-600 dark:text-[#00E5FF]">Ultimate Evolution</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-[18px] md:text-[24px] text-gray-600 dark:text-white/70 max-w-[800px] mx-auto mb-12 px-4"
+          >
+            From professional padel analytics to smart hydration systems, we build the technology that powers elite performance.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Toaster/>
+            <button onClick={handleContactClick} className="w-full sm:w-auto h-[60px] px-12 rounded-full bg-blue-600 dark:bg-[#00E5FF] text-white dark:text-black font-bold hover:scale-105 transition-transform">
+              Contact Sales
+            </button>
+            <Link to="/solutions" className="w-full sm:w-auto h-[60px] px-12 rounded-full border border-gray-300 dark:border-white/20 flex items-center justify-center gap-2 dark:text-white">
+              Explore Solutions <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Choose Your Experience */}
+      <section className="relative min-h-screen pt-24 sm:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Refined Glows */}
-        <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[10%] rounded-full w-[400px] h-[400px] top-[10%]" />
-        <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[10%] rounded-full w-[400px] h-[400px] top-[5%]" />
-        <div className="max-w-[1096px] mx-auto px-12">
+        <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[10%]" />
+        <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[5%]" />
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <h1 className="font-['Poppins',sans-serif] text-[32px] text-gray-900 dark:text-white/90 tracking-[0.8px]">
+            <h1 className="font-['Poppins',sans-serif] text-[24px] sm:text-[32px] text-gray-900 dark:text-white/90 tracking-[0.8px]">
               Choose Your Experience
             </h1>
           </motion.div>
 
           {/* Product Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* SUMMA Card */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -155,21 +224,21 @@ export function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Link to="/summa" className="block group">
-                <div className="relative h-[432px] rounded-[32px] overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <div className="relative h-[320px] sm:h-[380px] md:h-[432px] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
                   <img
                     src={imgImageSummaPadelSportsDashboard}
                     alt="SUMMA - Padel Sports Dashboard"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-10 flex flex-col gap-2 sm:gap-3">
                     <h2
-                      className="font-['Playfair_Display',serif] font-bold text-[64px] text-white shadow-lg"
+                      className="font-['Playfair_Display',serif] font-bold text-[48px] sm:text-[56px] md:text-[64px] text-white shadow-lg"
                       style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
                     >
                       SUMMA
                     </h2>
-                    <p className="font-['Poppins',sans-serif] text-[20px] text-white/90">
+                    <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[18px] md:text-[20px] text-white/90">
                       Padel Sports Dashboard
                     </p>
                     <div className="bg-emerald-500 dark:bg-[#39ff14] h-[4px] w-[96px] rounded-full shadow-lg dark:shadow-[0px_0px_12px_0px_rgba(57,255,20,0.8)]" />
@@ -185,21 +254,21 @@ export function HomePage() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <Link to="/almus" className="block group">
-                <div className="relative h-[432px] rounded-[32px] overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <div className="relative h-[320px] sm:h-[380px] md:h-[432px] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
                   <img
                     src={imgImageAlmusSmartDispenserStation}
                     alt="ALMUS - Smart Dispenser Station"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-10 flex flex-col gap-2 sm:gap-3">
                     <h2
-                      className="font-['Playfair_Display',serif] font-bold text-[64px] text-white shadow-lg"
+                      className="font-['Playfair_Display',serif] font-bold text-[48px] sm:text-[56px] md:text-[64px] text-white shadow-lg"
                       style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
                     >
                       ALMUS
                     </h2>
-                    <p className="font-['Poppins',sans-serif] text-[20px] text-white/90">
+                    <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[18px] md:text-[20px] text-white/90">
                       Smart Dispenser Station
                     </p>
                     <div className="bg-blue-500 dark:bg-[#00e5ff] h-[4px] w-[96px] rounded-full shadow-lg dark:shadow-[0px_0px_12px_0px_rgba(0,229,255,0.8)]" />
@@ -211,39 +280,39 @@ export function HomePage() {
         </div>
       </section>
 {/* PersonaVision AI Section - Integrated Design */}
-<section className="relative py-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
-  <div className="max-w-[1096px] mx-auto px-12">
+<section className="relative py-12 sm:py-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+  <div className="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-12">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="relative group bg-white dark:bg-[#0D121F] border border-gray-200 dark:border-white/10 rounded-[32px] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className="relative group bg-white dark:bg-[#0D121F] border border-gray-200 dark:border-white/10 rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
     >
       {/* Background Decorative Glow (Matching your existing style) */}
       <div className="absolute bg-purple-500/5 dark:bg-[rgba(192,192,192,0.03)] blur-[80px] -right-20 -top-20 rounded-full w-[300px] h-[300px]" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
         {/* Left: Content */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <div className="flex items-center gap-3 text-blue-500 dark:text-[#00e5ff]">
-            <Eye size={28} className="drop-shadow-[0_0_8px_rgba(0,229,255,0.4)]" />
-            <span className="font-['Poppins',sans-serif] text-[12px] uppercase tracking-[0.2rem] font-bold">
+            <Eye size={24} className="sm:w-7 sm:h-7 drop-shadow-[0_0_8px_rgba(0,229,255,0.4)]" />
+            <span className="font-['Poppins',sans-serif] text-[10px] sm:text-[12px] uppercase tracking-[0.2rem] font-bold">
               Featured Platform
             </span>
           </div>
           
-          <h3 className="font-['Playfair_Display',serif] font-bold text-[48px] leading-[1.1] text-gray-900 dark:text-white">
+          <h3 className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[42px] md:text-[48px] leading-[1.1] text-gray-900 dark:text-white">
             PersonaVision AI
           </h3>
           
-          <p className="font-['Poppins',sans-serif] text-gray-700 dark:text-white/80 text-[18px] leading-relaxed">
+          <p className="font-['Poppins',sans-serif] text-gray-700 dark:text-white/80 text-[16px] sm:text-[18px] leading-relaxed">
             Revolutionary computer vision platform powered by advanced neural networks. 
             Real-time movement analysis, biomechanical intelligence, and performance 
             optimization at the intersection of AI and human capability.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
             <button
           
               className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[48px] px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg hover:scale-105"
@@ -257,7 +326,7 @@ export function HomePage() {
         </div>
 
         {/* Right: Visual Element */}
-        <div className="relative h-80 rounded-[24px] overflow-hidden border border-gray-200 dark:border-[#00e5ff]/20 bg-gray-100 dark:bg-black/50 shadow-inner">
+        <div className="relative h-64 sm:h-80 rounded-[24px] overflow-hidden border border-gray-200 dark:border-[#00e5ff]/20 bg-gray-100 dark:bg-black/50 shadow-inner">
           <img 
             src="https://images.unsplash.com/photo-1673255745677-e36f618550d1?q=80&w=1080&auto=format&fit=crop"
             alt="PersonaVision AI Visualization"
@@ -266,11 +335,11 @@ export function HomePage() {
           {/* Overlay gradient matching your SUMMA/ALMUS cards */}
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent dark:from-black/80" />
           
-          <div className="absolute bottom-6 left-6 flex items-center gap-3">
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 flex items-center gap-3">
             <div className="bg-blue-500 dark:bg-[#00e5ff] p-2 rounded-lg">
               <Brain size={20} className="text-white dark:text-black" />
             </div>
-            <span className="font-['Poppins',sans-serif] text-white text-[14px] font-semibold uppercase tracking-wider">
+            <span className="font-['Poppins',sans-serif] text-white text-[12px] sm:text-[14px] font-semibold uppercase tracking-wider">
               AI Powered Analysis
             </span>
           </div>
@@ -280,17 +349,17 @@ export function HomePage() {
   </div>
 </section>
       {/* About Section */}
-      <section id="about" className="relative bg-white dark:bg-[#060910] py-24 overflow-hidden transition-colors duration-300 border-gray-100 dark:border-white/5">
+      <section id="about" className="relative bg-white dark:bg-[#060910] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300 border-gray-100 dark:border-white/5">
         <div className="absolute bg-blue-400/5 dark:bg-[rgba(0,229,255,0.02)] blur-[100px] h-[400px] left-1/2 -translate-x-1/2 rounded-full top-0 w-[800px]" />
 
-        <div className="max-w-[936px] mx-auto px-6">
+        <div className="max-w-[936px] mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <p className="font-['Poppins',sans-serif] text-[24px] leading-[40.8px] text-gray-700 dark:text-white/80 whitespace-pre-wrap">
+            <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[20px] md:text-[24px] leading-[1.7] text-gray-700 dark:text-white/80 whitespace-pre-wrap">
               ULTIMA delivers innovative healthcare products and intelligent
               systems designed to enhance safety, efficiency, and care quality
               in modern environments.
@@ -301,11 +370,11 @@ export function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4"
           >
             {["Smart products", "Technology", "Innovation"].map((item) => (
-              <div key={item} className="bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/20 rounded-full px-8 py-4 shadow-lg transition-colors duration-300">
-                <p className="font-['Poppins',sans-serif] text-[18px] text-gray-800 dark:text-white/90">
+              <div key={item} className="bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/20 rounded-full px-6 sm:px-8 py-3 sm:py-4 shadow-lg transition-colors duration-300">
+                <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[18px] text-gray-800 dark:text-white/90">
                   {item}
                 </p>
               </div>
@@ -315,11 +384,11 @@ export function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-24 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Subtle Background Glow */}
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] right-0 rounded-full w-[500px] h-[500px] top-1/4" />
 
-        <div className="max-w-[1096px] mx-auto px-12 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
           {/* Left Side - Heading */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -328,7 +397,7 @@ export function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-8"
+              className="font-['Playfair_Display',serif] font-bold text-[40px] sm:text-[52px] md:text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-6 sm:mb-8"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               Designed for <br />
@@ -381,7 +450,7 @@ export function HomePage() {
                   </svg>
                 </div>
 
-                <p className="font-['Poppins',sans-serif] text-[20px] font-medium text-gray-700 dark:text-white/90">
+                <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[20px] font-medium text-gray-700 dark:text-white/90">
                   {feature}
                 </p>
 
@@ -394,19 +463,19 @@ export function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative bg-gray-50 dark:bg-[#060910] py-32 overflow-hidden transition-colors duration-300 border-gray-100 dark:border-white/5">
+      <section className="relative bg-gray-50 dark:bg-[#060910] py-20 sm:py-24 md:py-32 overflow-hidden transition-colors duration-300 border-gray-100 dark:border-white/5">
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[150px] left-1/2 -translate-x-1/2 rounded-full w-[600px] h-[600px] -top-20" />
 
-        <div className="max-w-[1024px] mx-auto px-9 text-center">
+        <div className="max-w-[1024px] mx-auto px-4 sm:px-6 md:px-9 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-['Playfair_Display',serif] font-bold text-[64px] leading-[75px] text-gray-900 dark:text-white mb-16"
+            className="font-['Playfair_Display',serif] font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1.15] text-gray-900 dark:text-white mb-12 sm:mb-16"
             style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
           >
             Let's build safer, smarter
-            <br />
+            <br className="hidden sm:block" />
             healthcare environments.
           </motion.h2>
 
@@ -420,7 +489,7 @@ export function HomePage() {
             className="max-w-[798px] mx-auto space-y-6"
           >
             {/* Name and Company */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-800 dark:text-white/90 text-left">
                   Name *
@@ -452,7 +521,7 @@ export function HomePage() {
             </div>
 
             {/* Email and Phone */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-800 dark:text-white/90 text-left">
                   Email *
@@ -511,8 +580,8 @@ export function HomePage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
             {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
@@ -599,7 +668,7 @@ export function HomePage() {
           {/* Copyright */}
           <div className="pt-8 border-t border-gray-700 dark:border-white/10 text-center">
             <p className="font-['Poppins',sans-serif] text-[14px] text-gray-400">
-              © 2026 ULTIMA. All rights reserved.
+              © {new Date().getFullYear()} ULTIMA. All rights reserved.
             </p>
           </div>
         </div>

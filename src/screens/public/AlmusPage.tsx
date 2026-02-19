@@ -43,7 +43,7 @@ const flavors = [
 export function AlmusPage() {
   
   const { isDark, setIsDark } = useTheme();
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   
 
@@ -170,62 +170,14 @@ export function AlmusPage() {
 
             {/* Center Links */}
             <div className="hidden md:flex items-center gap-8">
-              <button
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                About
+              <Link to="/solutions" className="text-sm font-medium hover:text-blue-500 transition-colors">Solutions</Link>
+              <Link to="/summa" className="text-sm font-medium hover:text-blue-500 transition-colors">SUMMA</Link>
+              <Link to="/almus" className="text-sm font-medium hover:text-blue-500 transition-colors">ALMUS</Link>
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
               </button>
-              <button
-                onClick={scrollToContact}
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                Contact
-              </button>
-              <Link
-                to="/solutions"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                Solutions
-              </Link>
-              <Link
-                to="/summa"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                SUMMA
-              </Link>
-              <Link
-                to="/almus"
-                className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/80 hover:text-blue-600 dark:hover:text-white transition-colors duration-300"
-              >
-                ALMUS
-              </Link>
-              
-            </div>
-
-            {/* Right Side */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 transition-all duration-300"
-                aria-label="Toggle dark mode"
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
-          
-              <button
-                className="text-gray-700 dark:text-white/70 hover:text-blue-600 dark:hover:text-white transition-colors duration-300 font-['Poppins',sans-serif] font-semibold text-[14px]"
-              >
-                Login
-              </button>
-
-              <button
-                className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]"
-              >
-                Sign Up
+              <button className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]">
+                Get Started
               </button>
               {/* Nouveau Bouton Live Matches */}
               <button
@@ -236,10 +188,9 @@ export function AlmusPage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                </span>
                <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
-                Live Matches
+                LIVE Matches
                </span>
              </button>
-            
             </div>
           </div>
         </div>
@@ -750,7 +701,7 @@ export function AlmusPage() {
           {/* Copyright */}
           <div className="pt-8 border-t border-gray-700 dark:border-white/10 text-center">
             <p className="font-['Poppins',sans-serif] text-[14px] text-gray-400">
-              © 2026 ULTIMA. All rights reserved.
+              © {new Date().getFullYear()} ULTIMA. All rights reserved.
             </p>
           </div>
         </div>
