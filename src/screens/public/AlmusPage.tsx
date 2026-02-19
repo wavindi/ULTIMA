@@ -635,14 +635,6 @@ export function AlmusPage() {
                     About us
                   </a>
                 </li>
-                <li>
-                  <button
-              
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Our Localisation
-                  </button>
-                </li>
               </ul>
             </div>
 

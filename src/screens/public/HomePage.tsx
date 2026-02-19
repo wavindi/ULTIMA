@@ -580,8 +580,8 @@ export function HomePage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
@@ -596,19 +596,12 @@ export function HomePage() {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <p
-                    
+                  <a
+                    href="#"
                     className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     About us
-                  </p>
-                </li>
-                <li>
-                  <p
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Our Localisation
-                  </p>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -621,11 +614,11 @@ export function HomePage() {
               <ul className="space-y-2">
                 
                 <li>
-                  <p
+                  <button
                     className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     FAQ
-                  </p>
+                  </button>
                 </li>
               </ul>
             </div>
