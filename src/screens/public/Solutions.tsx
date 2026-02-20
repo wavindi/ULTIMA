@@ -382,13 +382,13 @@ export function Solutions() {
               <button onClick={handleContactClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] sm:text-[16px] text-white dark:text-black shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)]"
               >
-                Contact sales
+                Contact Sales
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 border-2 border-gray-300 dark:border-white/20 h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] sm:text-[16px] text-gray-800 dark:text-white"
               >
-                Create account
+                Create Account
               </button>
             </div>
           </motion.div>
@@ -419,14 +419,6 @@ export function Solutions() {
                   >
                     About us
                   </a>
-                </li>
-                <li>
-                  <button
-              
-                    className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    Our Localisation
-                  </button>
                 </li>
               </ul>
             </div>

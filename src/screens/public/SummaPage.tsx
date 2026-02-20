@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { motion } from "framer-motion";
-import { Moon, Sun, ArrowRight, Check, Activity, Zap, LayoutDashboard, Smartphone, Shield, Play, RefreshCw, MonitorPlay, Monitor, Globe, Users, AlertCircle, Sliders, Award, Dribbble, Trophy, Dumbbell } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Moon, Sun, ArrowRight, Check, Activity, Zap, LayoutDashboard, Smartphone, Shield, Play, RefreshCw, MonitorPlay, Monitor, Globe, Users, AlertCircle, Sliders, Award, Dribbble, Trophy, Dumbbell, Menu, X } from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
 import { toast, Toaster } from 'sonner'; 
 import { Mail, Phone } from 'lucide-react';
@@ -161,25 +161,25 @@ export function SummaPage() {
 
   const handleContactClick = () => {
   toast.custom((t) => (
-    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[300px]">
+    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-4 sm:p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[280px] sm:min-w-[300px] max-w-[90vw]">
       <div className="flex items-center justify-between">
-        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[18px]">Contact Details</h3>
+        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[16px] sm:text-[18px]">Contact Details</h3>
         <button onClick={() => toast.dismiss(t)} className="text-gray-400 hover:text-gray-600">✕</button>
       </div>
       
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center shrink-0">
             <Phone className="w-4 h-4 text-emerald-600 dark:text-[#39FF14]" />
           </div>
-          <span className="text-gray-700 dark:text-white/80 font-medium">+216 96 094 772</span>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">+216 96 094 772</span>
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center shrink-0">
             <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           </div>
-          <span className="text-gray-700 dark:text-white/80 font-medium">Ultima.contacus@gmail.com</span>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">Ultima.contacus@gmail.com</span>
         </div>
       </div>
     </div>
@@ -199,12 +199,12 @@ export function SummaPage() {
         transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-[rgba(10,14,26,0.8)] backdrop-blur-xl border-b border-gray-200 dark:border-white/10 transition-colors duration-300"
       >
-        <div className="max-w-[1096px] mx-auto px-6 py-4">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               to="/"
-              className="font-['Arial',sans-serif] font-bold text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
+              className="font-['Arial',sans-serif] font-bold text-[20px] sm:text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
             >
               ULTIMA
             </Link>
@@ -232,10 +232,57 @@ export function SummaPage() {
                 Live Matches
                </span>
              </button>
-            </div>
+            
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+            >
+              {isMenuOpen ? <X className="w-6 h-6 text-gray-900 dark:text-white" /> : <Menu className="w-6 h-6 text-gray-900 dark:text-white" />}
+            </button>
           </div>
         </div>
-      </motion.nav>
+        </div>
+        </motion.nav>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden border-t border-gray-200 dark:border-white/10 bg-white dark:bg-[#0A0E1A] overflow-hidden"
+            >
+              <div className="px-6 py-6 space-y-4">
+                <Link to="/solutions" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">Solutions</Link>
+                <Link to="/summa" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">SUMMA</Link>
+                <Link to="/almus" onClick={() => setIsMenuOpen(false)} className="block text-sm font-medium hover:text-blue-500 transition-colors">ALMUS</Link>
+                
+                <div className="pt-4 space-y-3 border-t border-gray-200 dark:border-white/10">
+                  <button onClick={() => setIsDark(!isDark)} className="w-full flex items-center justify-center gap-2 p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                    {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+                    <span className="text-sm font-medium">{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                  </button>
+                  <button className="w-full bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full hover:scale-105 transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black flex items-center justify-center shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(0,229,255,0.5)]">
+                    Get Started
+                  </button>
+                  <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                    </span>
+                    <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">
+                      Live Matches
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -312,7 +359,7 @@ export function SummaPage() {
       {/* Key Metrics Section */}
       <section className="relative py-20 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {metrics.map((metric, index) => (
               <motion.div
                 key={metric.label}
@@ -338,7 +385,7 @@ export function SummaPage() {
       </section>
 
       {/* What Is Summa Section */}
-      <section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -348,7 +395,7 @@ export function SummaPage() {
             className="text-center mb-16"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[56px] lg:text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               A complete scoring system
@@ -382,13 +429,13 @@ export function SummaPage() {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[20px] leading-[1.8] text-gray-600 dark:text-white/70 transition-colors duration-300">
+              <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[16px] sm:text-[18px] md:text-[20px] leading-[1.8] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 SUMMA combines real-time scoring, hardware and software
                 integration, and centralized management in one intelligent
                 platform.
               </p>
 
-              <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[20px] leading-[1.8] text-gray-600 dark:text-white/70 transition-colors duration-300">
+              <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[16px] sm:text-[18px] md:text-[20px] leading-[1.8] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 Designed specifically for padel courts, it automates
                 match tracking while giving facility managers complete control
                 over court operations and player data.
@@ -401,7 +448,7 @@ export function SummaPage() {
       </section>
 
       {/* Core Features Section */}
-      <section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -411,14 +458,14 @@ export function SummaPage() {
             className="text-center mb-16"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               Core features
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -450,7 +497,7 @@ export function SummaPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -460,14 +507,14 @@ export function SummaPage() {
             className="text-center mb-16"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               How it works
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -501,7 +548,7 @@ export function SummaPage() {
         </div>
       </section>
        {/* Interfaces & Platforms Section */}
-<section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+<section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
   <div className="max-w-7xl mx-auto relative z-10">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -511,11 +558,11 @@ export function SummaPage() {
       className="text-center mb-16"
     >
       <h2
-        className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
+        className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
       >
         Interfaces & platforms
       </h2>
-      <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300">
+      <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[16px] sm:text-[18px] md:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300">
         SUMMA is a complete ecosystem accessible from every touchpoint
       </p>
     </motion.div>
@@ -557,7 +604,7 @@ export function SummaPage() {
 </section>
      
       {/* Why Choose Summa Section */}
-      <section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -567,7 +614,7 @@ export function SummaPage() {
             className="text-center mb-16"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               Why choose SUMMA
@@ -637,7 +684,7 @@ export function SummaPage() {
         </div>
       </section>
       {/* Where Summa Fits Section */}
-<section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+<section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
   <div className="max-w-7xl mx-auto relative z-10">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -647,11 +694,11 @@ export function SummaPage() {
       className="text-center mb-16"
     >
       <h2
-        className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
+        className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
       >
         Where SUMMA fits
       </h2>
-      <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300">
+      <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[16px] sm:text-[18px] md:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300">
         Built for professional sports environments that demand precision and reliability
       </p>
     </motion.div>
@@ -683,7 +730,7 @@ export function SummaPage() {
   </div>
 </section>
       {/* Ultima Ecosystem Section */}
-      <section className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -693,13 +740,13 @@ export function SummaPage() {
             className="text-center"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] leading-[1.1] text-gray-900 dark:text-white mb-12 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               Part of the ULTIMA ecosystem
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -768,7 +815,7 @@ export function SummaPage() {
       {/* Final CTA Section */}
       <section
         id="summa-cta"
-        className="relative py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300"
+        className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300"
       >
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
@@ -779,12 +826,12 @@ export function SummaPage() {
             className="text-center mb-16"
           >
             <h2
-              className="font-['Playfair_Display',serif] font-bold text-[56px] lg:text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-6 transition-colors duration-300"
+              className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
               style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
             >
               Bring SUMMA to your facility
             </h2>
-            <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 transition-colors duration-300">
+            <p className="font-['Poppins',sans-serif] text-[18px] lg:text-[16px] sm:text-[18px] md:text-[20px] leading-[1.7] text-gray-600 dark:text-white/60 transition-colors duration-300">
               Request a demo and discover how SUMMA can transform your sports facility
             </p>
           </motion.div>
@@ -908,8 +955,8 @@ export function SummaPage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
                 ULTIMA

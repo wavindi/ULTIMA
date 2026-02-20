@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { Moon, Sun, ArrowRight, Dumbbell,Trophy, Citrus, Leaf, Cherry, Palmtree } from "lucide-react";
+import { Moon, Sun, ArrowRight, Citrus, Leaf, Cherry, Palmtree } from "lucide-react";
 import { useTheme } from "../../styles/useTheme";
 import { toast, Toaster } from 'sonner'; 
 import { Mail, Phone } from 'lucide-react';
@@ -14,7 +14,7 @@ const flavors = [
   { 
     name: "Lemon & Lime", 
     desc: "Refreshing citrus burst", 
-    color: "bg-yellow-400",
+    color: "bg-yellow-300",
     icon: Citrus 
   },
   { 
@@ -158,7 +158,7 @@ export function AlmusPage() {
         transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-[rgba(10,14,26,0.8)] backdrop-blur-xl border-b border-gray-200 dark:border-white/10 transition-colors duration-300"
       >
-        <div className="max-w-[1096px] mx-auto px-6 py-4">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
@@ -192,17 +192,55 @@ export function AlmusPage() {
                </span>
              </button>
             </div>
+
+            {/* Mobile right side: theme toggle + hamburger */}
+            <div className="flex md:hidden items-center gap-3">
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+              >
+                <div className="w-5 h-4 flex flex-col justify-between">
+                  <span className={`block h-0.5 bg-gray-900 dark:bg-white rounded-full transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                  <span className={`block h-0.5 bg-gray-900 dark:bg-white rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                  <span className={`block h-0.5 bg-gray-900 dark:bg-white rounded-full transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[9px]' : ''}`} />
+                </div>
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu Panel */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-gray-200 dark:border-white/10 pt-4">
+              <Link to="/solutions" className="text-sm font-medium hover:text-blue-500 transition-colors" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
+              <Link to="/summa" className="text-sm font-medium hover:text-blue-500 transition-colors" onClick={() => setIsMenuOpen(false)}>SUMMA</Link>
+              <Link to="/almus" className="text-sm font-medium hover:text-blue-500 transition-colors" onClick={() => setIsMenuOpen(false)}>ALMUS</Link>
+              <div className="flex items-center gap-3 flex-wrap">
+                <button className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00E5FF] dark:hover:bg-[#00D4E6] h-[40px] px-6 rounded-full font-['Poppins',sans-serif] font-semibold text-[14px] text-white dark:text-black shadow-lg dark:shadow-[0_0_20px_rgba(0,229,255,0.3)]">
+                  Get Started
+                </button>
+                <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all duration-300">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                  </span>
+                  <span className="font-['Poppins',sans-serif] font-semibold text-[14px] text-red-600 dark:text-red-500">LIVE Matches</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative min-h-[70vh] pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
         <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
 
-        <div className="max-w-[1096px] mx-auto px-12 relative">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-8 lg:px-12 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -213,7 +251,7 @@ export function AlmusPage() {
             >
               <div>
                 <h1
-                  className="font-['Playfair_Display',serif] font-bold text-[120px] text-gray-900 dark:text-white mb-2 transition-colors duration-300"
+                  className="font-['Playfair_Display',serif] font-bold text-[64px] sm:text-[90px] lg:text-[120px] text-gray-900 dark:text-white mb-2 transition-colors duration-300"
                   style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
                 >
                   ALMUS
@@ -221,17 +259,16 @@ export function AlmusPage() {
                 <div className="bg-blue-500 dark:bg-[#00e5ff] h-[6px] w-[128px] rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.8)] transition-colors duration-300" />
               </div>
 
-              <h2 className="font-['Poppins',sans-serif] font-medium text-[24px] text-gray-700 dark:text-white/90 tracking-[0.5px] transition-colors duration-300">
+              <h2 className="font-['Poppins',sans-serif] font-medium text-[18px] sm:text-[24px] text-gray-700 dark:text-white/90 tracking-[0.5px] transition-colors duration-300">
                 Smart Hydration Station
               </h2>
 
-              <p className="font-['Poppins',sans-serif] text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
-                ALMUS delivers flavored, low-calorie beverages designed to
+              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 support hydration, recovery, and performance in active
                 environments.
               </p>
 
-              <div className="flex gap-6 mt-6">
+              <div className="flex flex-wrap gap-4 mt-6">
                 <button  className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[56px] px-8 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black">
                   Request a quote
                 </button>
@@ -247,13 +284,13 @@ export function AlmusPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative mt-8 lg:mt-0"
             >
               <div className="relative rounded-[32px] overflow-hidden shadow-xl dark:shadow-[0px_20px_60px_0px_rgba(0,0,0,0.6)]">
                 <img
                   src={imgImageAlmusSmartHydrationStation}
                   alt="ALMUS Smart Hydration Station"
-                  className="w-full h-[461px] object-cover rounded-[32px]"
+                  className="w-full h-[260px] sm:h-[360px] lg:h-[461px] object-cover rounded-[32px]"
                 />
                 <div
                   className="absolute inset-0 blur-[24px] opacity-30 dark:opacity-100"
@@ -269,17 +306,17 @@ export function AlmusPage() {
       </section>
 
       {/* Hydration Solution Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative min-h-[70vh] pt-20 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
         <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
 
-        <div className="max-w-[1096px] mx-auto px-20 relative">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-10 lg:px-20 relative">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-['Playfair_Display',serif] font-bold text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-16 max-w-[704px] transition-colors duration-300"
+            className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[48px] lg:text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-10 lg:mb-16 max-w-[704px] transition-colors duration-300"
             style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
           >
             A hydration solution designed for your facility
@@ -315,9 +352,9 @@ export function AlmusPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="pt-24"
+              className="pt-0 lg:pt-24"
             >
-              <p className="font-['Poppins',sans-serif] text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
+              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 ALMUS is an on-site hydration station that mixes water with
                 light flavors to offer refreshing, low-calorie drinks. Built for
                 high-traffic environments, it enhances user experience while
@@ -329,13 +366,13 @@ export function AlmusPage() {
       </section>
 
 {/* Why Choose ALMUS Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative min-h-[70vh] pt-20 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
         <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
 
-        <div className="max-w-[1096px] mx-auto px-14 relative">
-          <div className="grid lg:grid-cols-2 gap-16">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-10 lg:px-14 relative">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Left Heading */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -344,7 +381,7 @@ export function AlmusPage() {
               transition={{ duration: 0.8 }}
             >
               <h2
-                className="font-['Playfair_Display',serif] font-bold text-[64px] leading-[1.2] text-gray-900 dark:text-white transition-colors duration-300"
+                className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[48px] lg:text-[64px] leading-[1.2] text-gray-900 dark:text-white transition-colors duration-300"
                 style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
               >
                 Why choose ALMUS
@@ -375,12 +412,12 @@ export function AlmusPage() {
                     hidden: { opacity: 0, y: 30 },
                     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
                   }}
-                  className="bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[32px] p-10 shadow-xl dark:shadow-[0px_20px_60px_0px_rgba(0,0,0,0.6)] transition-colors duration-300"
+                  className="bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[32px] p-6 sm:p-10 shadow-xl dark:shadow-[0px_20px_60px_0px_rgba(0,0,0,0.6)] transition-colors duration-300"
                 >
-                  <h3 className="font-['Poppins',sans-serif] font-bold text-[24px] leading-[36.4px] text-gray-800 dark:text-white mb-4 transition-colors duration-300">
+                  <h3 className="font-['Poppins',sans-serif] font-bold text-[18px] sm:text-[24px] leading-[36.4px] text-gray-800 dark:text-white mb-4 transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="font-['Poppins',sans-serif] text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
+                  <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -393,7 +430,7 @@ export function AlmusPage() {
       {/* Flavored Hydration Options  */}
 <section className="relative min-h-[70vh] py-24 bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
 <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[365.33px] rounded-full w-[500px] h-[500px] top-[181.02px]" />
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
@@ -442,13 +479,13 @@ export function AlmusPage() {
 </section>
 
       {/* How It Works Section */}
-<section className="relative min-h-[70vh] pt-32 pb-16 bg-white dark:bg-[#060910] transition-colors duration-300">
+<section className="relative min-h-[70vh] pt-20 md:pt-32 pb-16 bg-white dark:bg-[#060910] transition-colors duration-300">
       <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[298px] rounded-full w-[500px] h-[500px] top-[145.39px]" />
   <div className="max-w-[936px] mx-auto px-6 relative text-center">
     <motion.h2
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="font-['Playfair_Display',serif] font-bold text-[72px] text-gray-900 dark:text-white mb-16"
+      className="font-['Playfair_Display',serif] font-bold text-[44px] sm:text-[60px] lg:text-[72px] text-gray-900 dark:text-white mb-16"
     >
       How it works
     </motion.h2>
@@ -456,13 +493,13 @@ export function AlmusPage() {
     {/* Glowing underline */}
     <div className="w-32 h-1.5 bg-blue-500 dark:bg-[#00e5ff] mx-auto -mt-12 mb-20 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.8)]" />
 
-    <div className="relative flex items-center justify-center gap-12">
+    <div className="relative flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
       {/* Step Card */}
       <motion.div
         key={currentStep}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="relative w-full max-w-[650px] bg-white dark:bg-[#161B2C] border border-gray-200 dark:border-white/10 rounded-[40px] p-12 flex items-center gap-10 shadow-2xl transition-colors duration-300"
+        className="relative w-full max-w-[650px] bg-white dark:bg-[#161B2C] border border-gray-200 dark:border-white/10 rounded-[40px] p-6 sm:p-12 flex flex-col sm:flex-row items-center gap-6 sm:gap-10 shadow-2xl transition-colors duration-300"
       >
         {/* Circular Number Badge */}
         <div className="relative flex-shrink-0 w-32 h-32 rounded-full bg-gray-100 dark:bg-gradient-to-b dark:from-white/10 dark:to-transparent border border-gray-200 dark:border-white/20 flex items-center justify-center shadow-inner">
@@ -472,11 +509,11 @@ export function AlmusPage() {
         </div>
 
         {/* Text Content */}
-        <div className="text-left">
-          <h3 className="font-['Poppins',sans-serif] font-bold text-[28px] text-gray-900 dark:text-white mb-2">
+        <div className="text-center sm:text-left">
+          <h3 className="font-['Poppins',sans-serif] font-bold text-[22px] sm:text-[28px] text-gray-900 dark:text-white mb-2">
             {steps[currentStep].title}
           </h3>
-          <p className="font-['Poppins',sans-serif] text-[20px] text-gray-600 dark:text-white/60">
+          <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[20px] text-gray-600 dark:text-white/60">
             {steps[currentStep].description}
           </p>
         </div>
@@ -509,7 +546,7 @@ export function AlmusPage() {
 
 
       {/* Bring ALMUS to Your Facility Section */}
-      <section id="almus-cta" className="relative min-h-[70vh] pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section id="almus-cta" className="relative min-h-[70vh] pt-20 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}
         <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
 
@@ -518,12 +555,12 @@ export function AlmusPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-['Playfair_Display',serif] font-bold text-[62px] leading-[61.6px] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
+            className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[48px] lg:text-[62px] leading-[1.1] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
             style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
           >
             Bring ALMUS to your facility
           </motion.h2>
-          <p className="font-['Poppins',sans-serif] text-[24px] leading-[34px] text-gray-600 dark:text-white/70 mb-12 transition-colors duration-300">
+          <p className="font-['Poppins',sans-serif] text-[18px] md:text-[24px] leading-[28px] md:leading-[34px] text-gray-600 dark:text-white/70 mb-12 transition-colors duration-300">
             Contact us to learn more about integrating ALMUS into your facility.
           </p>
 
@@ -601,7 +638,7 @@ export function AlmusPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[55px] px-12 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[15px] text-white dark:text-black flex items-center justify-center gap-2 mx-auto"
+              className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[55px] w-full sm:w-auto px-12 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[15px] text-white dark:text-black flex items-center justify-center gap-2 mx-auto"
             >
               Send inquiry
               <ArrowRight className="w-5 h-5" />
@@ -613,7 +650,7 @@ export function AlmusPage() {
 {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
         <div className="max-w-[1096px] mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
