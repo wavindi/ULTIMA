@@ -283,8 +283,9 @@ export function SummaPage() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      
+{/* Hero Section */}
+      <section className="relative min-h-[70vh] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img
@@ -294,8 +295,8 @@ export function SummaPage() {
           />
         </div>
 
-        <div className="max-w-[1200px] mx-auto w-full px-8 lg:px-12 pb-16 relative z-10">
-          <div className="text-center space-y-8">
+        <div className="max-w-[1200px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 pb-12 sm:pb-16 relative z-10">
+          <div className="text-center space-y-6 sm:space-y-8">
             {/* Title */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -303,12 +304,12 @@ export function SummaPage() {
               transition={{ duration: 0.8 }}
             >
               <h1
-                className="font-['Playfair_Display',serif] font-bold text-[100px] md:text-[82px] lg:text-[120px] leading-[0.9] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
+                className="font-['Playfair_Display',serif] font-bold text-[56px] sm:text-[80px] md:text-[100px] lg:text-[120px] leading-[0.9] text-gray-900 dark:text-white mb-4 transition-colors duration-300"
                 style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
               >
                 SUMMA
               </h1>
-              <div className="w-40 h-[6px] bg-emerald-500 dark:bg-[#39FF14] rounded-full shadow-lg dark:shadow-[0_0_20px_rgba(57,255,20,0.8)] mx-auto mb-8 transition-colors duration-300"></div>
+              <div className="w-32 sm:w-40 h-[6px] bg-emerald-500 dark:bg-[#39FF14] rounded-full shadow-lg dark:shadow-[0_0_20px_rgba(57,255,20,0.8)] mx-auto mb-6 sm:mb-8 transition-colors duration-300"></div>
             </motion.div>
 
             {/* Subtitle */}
@@ -316,7 +317,7 @@ export function SummaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-['Poppins',sans-serif] text-[28px] text-gray-700 dark:text-white/90 font-light tracking-wide transition-colors duration-300"
+              className="font-['Poppins',sans-serif] text-[20px] sm:text-[24px] md:text-[28px] text-gray-700 dark:text-white/90 font-light tracking-wide transition-colors duration-300"
             >
               Smart Scoring & Facility System
             </motion.h2>
@@ -326,7 +327,7 @@ export function SummaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="font-['Poppins',sans-serif] text-[18px] leading-[1.8] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300"
+              className="font-['Poppins',sans-serif] text-[16px] sm:text-[18px] leading-[1.8] text-gray-600 dark:text-white/60 max-w-2xl mx-auto transition-colors duration-300 px-4"
             >
               An intelligent scoring and facility management system designed for
               padel courts and professional sports environments
@@ -337,16 +338,16 @@ export function SummaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-4 pt-4"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-4"
             >
               <button
-                className="bg-emerald-500 hover:bg-emerald-600 dark:bg-[#39FF14] dark:hover:bg-[#32E012] h-[60px] px-12 rounded-full hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black shadow-lg dark:shadow-[0_0_20px_rgba(57,255,20,0.6)]"
+                className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 dark:bg-[#39FF14] dark:hover:bg-[#32E012] h-[52px] sm:h-[60px] px-8 sm:px-12 rounded-full hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black shadow-lg dark:shadow-[0_0_20px_rgba(57,255,20,0.6)]"
               >
                 Request a demo
               </button>
               <Toaster />
               <button onClick={handleContactClick}
-                className="bg-transparent hover:bg-gray-100 dark:hover:bg-white/10 h-[60px] px-12 rounded-full border-2 border-gray-300 dark:border-white/40 hover:border-emerald-500 dark:hover:border-[#39FF14] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white"
+                className="w-full sm:w-auto bg-transparent hover:bg-gray-100 dark:hover:bg-white/10 h-[52px] sm:h-[60px] px-8 sm:px-12 rounded-full border-2 border-gray-300 dark:border-white/40 hover:border-emerald-500 dark:hover:border-[#39FF14] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white"
               >
                 Contact sales
               </button>
@@ -356,9 +357,9 @@ export function SummaPage() {
       </section>
 
       {/* Key Metrics Section */}
-      <section className="relative py-20 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-4 sm:px-6 lg:px-20 overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {metrics.map((metric, index) => (
               <motion.div
                 key={metric.label}
@@ -366,15 +367,15 @@ export function SummaPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative bg-gray-100 dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 rounded-[20px] p-8 text-center transition-colors duration-300"
+                className="relative bg-gray-100 dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 rounded-[20px] p-6 sm:p-8 text-center transition-colors duration-300"
               >
                 <h3
-                  className="font-['Playfair_Display',serif] font-bold text-[48px] text-emerald-600 dark:text-[#39FF14] mb-2 transition-colors duration-300"
+                  className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[42px] md:text-[48px] text-emerald-600 dark:text-[#39FF14] mb-2 transition-colors duration-300"
                   style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
                 >
                   {metric.number}
                 </h3>
-                <p className="font-['Poppins',sans-serif] text-[14px] text-gray-600 dark:text-white/70 uppercase tracking-wider transition-colors duration-300">
+                <p className="font-['Poppins',sans-serif] text-[13px] sm:text-[14px] text-gray-600 dark:text-white/70 uppercase tracking-wider transition-colors duration-300">
                   {metric.label}
                 </p>
               </motion.div>
@@ -382,6 +383,7 @@ export function SummaPage() {
           </div>
         </div>
       </section>
+
 
       {/* What Is Summa Section */}
       <section className="relative py-16 sm:py-20 md:py-24 px-6 lg:px-20 overflow-hidden transition-colors duration-300">
