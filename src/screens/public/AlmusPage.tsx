@@ -343,7 +343,7 @@ export function AlmusPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[48px] lg:text-[64px] leading-[1.1] text-gray-900 dark:text-white mb-10 lg:mb-16 max-w-[704px] transition-colors duration-300"
+            className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] text-gray-900 dark:text-white mb-6"
             style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
           >
             A hydration solution designed for your facility
@@ -408,7 +408,7 @@ export function AlmusPage() {
               transition={{ duration: 0.8 }}
             >
               <h2
-                className="font-['Playfair_Display',serif] font-bold text-[36px] sm:text-[48px] lg:text-[64px] leading-[1.2] text-gray-900 dark:text-white transition-colors duration-300"
+                className="font-['Playfair_Display',serif] font-bold text-[48px] lg:text-[56px] text-gray-900 dark:text-white mb-6"
                 style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
               >
                 Why choose ALMUS
