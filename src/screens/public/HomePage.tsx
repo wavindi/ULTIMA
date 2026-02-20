@@ -161,43 +161,64 @@ export function HomePage() {
       </motion.nav>
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 md:pt-48 md:pb-32 px-4 sm:px-6 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
-        <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[10%]" />
-        <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[10%] rounded-full w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] top-[5%]" />
-        <div className="max-w-[1096px] mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[36px] md:text-[64px] lg:text-[82px] font-bold leading-[1.1] text-gray-900 dark:text-white mb-8"
-          >
-            Experience the  <br className="hidden md:block" />
-            <span className="text-blue-600 dark:text-[#00E5FF]">Ultimate Evolution</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[18px] md:text-[24px] text-gray-600 dark:text-white/70 max-w-[800px] mx-auto mb-12 px-4"
-          >
-            From professional padel analytics to smart hydration systems, we build the technology that powers elite performance.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Toaster/>
-            <button onClick={handleContactClick} className="w-full sm:w-auto h-[60px] px-12 rounded-full bg-blue-600 dark:bg-[#00E5FF] text-white dark:text-black font-bold hover:scale-105 transition-transform">
-              Contact Sales
-            </button>
-            <Link to="/solutions" className="w-full sm:w-auto h-[60px] px-12 rounded-full border border-gray-300 dark:border-white/20 flex items-center justify-center gap-2 dark:text-white">
-              Explore Solutions <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+<section className="relative pt-20 pb-16 sm:pt-28 sm:pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
 
+  {/* Background blurs */}
+  <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[5%] sm:left-[10%] rounded-full w-[180px] h-[180px] sm:w-[400px] sm:h-[400px] top-[10%]" />
+  <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[5%] sm:right-[10%] rounded-full w-[180px] h-[180px] sm:w-[400px] sm:h-[400px] top-[5%]" />
+
+  <div className="max-w-[1096px] mx-auto text-center relative">
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="text-[30px] sm:text-[42px] md:text-[64px] lg:text-[82px] 
+                 font-bold leading-tight text-gray-900 dark:text-white mb-6"
+    >
+      Experience the <br className="hidden md:block" />
+      <span className="text-blue-600 dark:text-[#00E5FF]">Ultimate Evolution</span>
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-[15px] sm:text-[18px] md:text-[22px] 
+                 text-gray-600 dark:text-white/70 
+                 max-w-[800px] mx-auto mb-10 px-2 sm:px-4"
+    >
+      From professional padel analytics to smart hydration systems, we build the technology that powers elite performance.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4 }}
+      className="flex flex-col sm:flex-row items-center justify-center gap-4"
+    >
+      <Toaster/>
+
+      <button
+        onClick={handleContactClick}
+        className="w-full sm:w-auto h-[52px] sm:h-[60px] px-10 sm:px-12 
+                   rounded-full bg-blue-600 dark:bg-[#00E5FF] 
+                   text-white dark:text-black font-bold 
+                   hover:scale-105 transition-transform"
+      >
+        Contact Sales
+      </button>
+
+      <Link
+        to="/solutions"
+        className="w-full sm:w-auto h-[52px] sm:h-[60px] px-10 sm:px-12 
+                   rounded-full border border-gray-300 dark:border-white/20 
+                   flex items-center justify-center gap-2 
+                   dark:text-white"
+      >
+        Explore Solutions <ArrowRight className="w-5 h-5" />
+      </Link>
+    </motion.div>
+  </div>
+</section>
       {/* Choose Your Experience */}
       <section className="relative min-h-screen pt-24 sm:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Refined Glows */}
