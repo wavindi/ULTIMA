@@ -232,7 +232,7 @@ export function SummaPage() {
                 Live Matches
                </span>
              </button>
-            
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -243,8 +243,6 @@ export function SummaPage() {
             </button>
           </div>
         </div>
-        </div>
-        </motion.nav>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -283,6 +281,7 @@ export function SummaPage() {
             </motion.div>
           )}
         </AnimatePresence>
+      </motion.nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -955,41 +954,45 @@ export function SummaPage() {
 
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
                 ULTIMA
               </h3>
             </div>
 
+            {/* ULTIMA Column */}
             <div>
               <h4 className="font-['Poppins',sans-serif] font-semibold text-[14px] text-white mb-4">
                 ULTIMA
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <button
+                  <a
+                    href="#"
                     className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     About us
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
 
+            {/* Support Column */}
             <div>
               <h4 className="font-['Poppins',sans-serif] font-semibold text-[14px] text-white mb-4">
                 Support
               </h4>
               <ul className="space-y-2">
-               
+                
                 <li>
-                  <p
+                  <button
                     className="font-['Poppins',sans-serif] text-[14px] text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     FAQ
-                  </p>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -1028,6 +1031,8 @@ export function SummaPage() {
             </div>
           </div>
 
+
+          {/* Copyright */}
           <div className="pt-8 border-t border-gray-700 dark:border-white/10 text-center">
             <p className="font-['Poppins',sans-serif] text-[14px] text-gray-400">
               © {new Date().getFullYear()} ULTIMA. All rights reserved.
