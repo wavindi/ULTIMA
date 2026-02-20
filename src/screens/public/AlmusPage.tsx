@@ -150,8 +150,8 @@ export function AlmusPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-black transition-colors duration-300">
-     {/* Navigation */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-gray-900 transition-colors duration-300">
+      {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -241,7 +241,6 @@ export function AlmusPage() {
           )}
         </AnimatePresence>
       </motion.nav>
-
       {/* Hero Section */}
       <section className="relative min-h-[70vh] pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}

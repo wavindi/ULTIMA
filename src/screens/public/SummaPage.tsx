@@ -284,7 +284,7 @@ export function SummaPage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 md:pt-48 md:pb-32 px-4 sm:px-6 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative min-h-[70vh] pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img
