@@ -120,25 +120,25 @@ export function AlmusPage() {
 
   const handleContactClick = () => {
   toast.custom((t) => (
-    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[300px]">
+    <div className="bg-white dark:bg-[#0F1425] border border-gray-200 dark:border-white/10 p-4 sm:p-6 rounded-[24px] shadow-2xl flex flex-col gap-4 min-w-[280px] sm:min-w-[300px] max-w-[90vw]">
       <div className="flex items-center justify-between">
-        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[18px]">Contact Details</h3>
+        <h3 className="font-bold text-gray-900 dark:text-white font-['Poppins'] text-[16px] sm:text-[18px]">Contact Details</h3>
         <button onClick={() => toast.dismiss(t)} className="text-gray-400 hover:text-gray-600">✕</button>
       </div>
       
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-[#39FF14]/10 flex items-center justify-center shrink-0">
             <Phone className="w-4 h-4 text-emerald-600 dark:text-[#39FF14]" />
           </div>
-          <span className="text-gray-700 dark:text-white/80 font-medium">96 094 772</span>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">96 094 772</span>
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-400/10 flex items-center justify-center shrink-0">
             <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           </div>
-          <span className="text-gray-700 dark:text-white/80 font-medium">Ultima.contacus@gmail.com</span>
+          <span className="text-gray-700 dark:text-white/80 font-medium text-sm sm:text-base break-all">Ultima.contacus@gmail.com</span>
         </div>
       </div>
     </div>
@@ -163,7 +163,7 @@ export function AlmusPage() {
             {/* Logo */}
             <Link
               to="/"
-              className="font-['Arial',sans-serif] font-bold text-[20px] sm:text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
+              className="font-['Arial',sans-serif] font-bold text-[20px] sm:text-[20px] sm:text-[24px] text-gray-900 dark:text-white tracking-[1.2px] transition-colors duration-300"
             >
               ULTIMA
             </Link>
@@ -270,17 +270,17 @@ export function AlmusPage() {
                 Smart Hydration Station
               </h2>
 
-              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
+              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[16px] sm:text-[20px] md:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 support hydration, recovery, and performance in active
                 environments.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-6">
-                <button  className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[56px] px-8 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black">
+                <button  className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black">
                   Request a quote
                 </button>
                 <Toaster />
-              <button onClick={handleContactClick} className="bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 border-2 border-gray-300 dark:border-white/20 h-[56px] px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white">
+              <button onClick={handleContactClick} className="bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 border-2 border-gray-300 dark:border-white/20 h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white">
                   Contact ULTIMA
                 </button>
               </div>
@@ -361,7 +361,7 @@ export function AlmusPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="pt-0 lg:pt-24"
             >
-              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
+              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[16px] sm:text-[20px] md:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                 ALMUS is an on-site hydration station that mixes water with
                 light flavors to offer refreshing, low-calorie drinks. Built for
                 high-traffic environments, it enhances user experience while
@@ -421,10 +421,10 @@ export function AlmusPage() {
                   }}
                   className="bg-white/80 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[32px] p-6 sm:p-10 shadow-xl dark:shadow-[0px_20px_60px_0px_rgba(0,0,0,0.6)] transition-colors duration-300"
                 >
-                  <h3 className="font-['Poppins',sans-serif] font-bold text-[18px] sm:text-[24px] leading-[36.4px] text-gray-800 dark:text-white mb-4 transition-colors duration-300">
+                  <h3 className="font-['Poppins',sans-serif] font-bold text-[18px] sm:text-[16px] sm:text-[20px] md:text-[24px] leading-[36.4px] text-gray-800 dark:text-white mb-4 transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
+                  <p className="font-['Poppins',sans-serif] text-[16px] sm:text-[16px] sm:text-[20px] md:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -567,7 +567,7 @@ export function AlmusPage() {
           >
             Bring ALMUS to your facility
           </motion.h2>
-          <p className="font-['Poppins',sans-serif] text-[18px] md:text-[24px] leading-[28px] md:leading-[34px] text-gray-600 dark:text-white/70 mb-12 transition-colors duration-300">
+          <p className="font-['Poppins',sans-serif] text-[18px] md:text-[16px] sm:text-[20px] md:text-[24px] leading-[28px] md:leading-[34px] text-gray-600 dark:text-white/70 mb-12 transition-colors duration-300">
             Contact us to learn more about integrating ALMUS into your facility.
           </p>
 
@@ -580,7 +580,7 @@ export function AlmusPage() {
             className="space-y-6"
           >
             {/* Name and Facility */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="font-['Poppins',sans-serif] font-medium text-[16px] text-gray-700 dark:text-white/90 text-left transition-colors duration-300">
                   Name
@@ -656,8 +656,8 @@ export function AlmusPage() {
 
 {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
