@@ -242,76 +242,96 @@ export function AlmusPage() {
         </AnimatePresence>
       </motion.nav>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-24 sm:pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910]">
-        {/* Background Blurs matching the new aesthetic */}
-        <div className="hidden md:block absolute bg-blue-400/10 blur-[120px] left-[15%] w-[500px] h-[500px] top-[10%] absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
-        <div className="hidden md:block absolute bg-emerald-400/10 blur-[120px] right-[15%] w-[500px] h-[500px] top-[20%] absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
+<section className="relative min-h-[70vh] pt-20 sm:pt-24 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910]">
 
-        <div className="max-w-[1096px] mx-auto px-4 sm:px-8 lg:px-12 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col gap-4"
-            >
-              <div>
-                <h1
-                  className="font-bold text-[42px] sm:text-[64px] md:text-[90px] lg:text-[120px] font-['Playfair_Display',serif] font-bold text-[64px] sm:text-[90px] lg:text-[120px] text-gray-900 dark:text-white mb-2 transition-colors duration-300"
-                  style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
-                >
-                  ALMUS
-                </h1>
-                <div className="bg-blue-500 dark:bg-[#00e5ff] h-[6px] w-[128px] rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.8)] transition-colors duration-300" />
-              </div>
+  {/* Background Blurs (hidden on mobile) */}
+  <div className="hidden md:block absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
+  <div className="hidden md:block absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
 
-              <h2 className="font-['Poppins',sans-serif] font-medium text-[18px] sm:text-[24px] text-gray-700 dark:text-white/90 tracking-[0.5px] transition-colors duration-300">
-                Smart Hydration Station
-              </h2>
+  <div className="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-12 relative">
+    <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
-              <p className="font-['Poppins',sans-serif] text-[18px] sm:text-[16px] sm:text-[20px] md:text-[24px] leading-[34px] text-gray-600 dark:text-white/70 transition-colors duration-300">
-                support hydration, recovery, and performance in active
-                environments.
-              </p>
-
-              <div className="flex flex-wrap gap-4 mt-6">
-                <button  className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full shadow-lg dark:shadow-[0px_0px_20px_0px_rgba(0,229,255,0.3)] hover:shadow-xl dark:hover:shadow-[0px_0px_30px_0px_rgba(0,229,255,0.5)] hover:scale-[1.02] transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-white dark:text-black">
-                  Request a quote
-                </button>
-                <Toaster />
-              <button onClick={handleContactClick} className="bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 border-2 border-gray-300 dark:border-white/20 h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full transition-all duration-300 font-['Poppins',sans-serif] font-semibold text-[16px] text-gray-800 dark:text-white">
-                  Contact ULTIMA
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Right Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative mt-8 lg:mt-0"
-            >
-              <div className="relative rounded-[32px] overflow-hidden shadow-xl dark:shadow-[0px_20px_60px_0px_rgba(0,0,0,0.6)]">
-                <img
-                  src={imgImageAlmusSmartHydrationStation}
-                  alt="ALMUS Smart Hydration Station"
-                  className="w-full h-[260px] sm:h-[360px] lg:h-[461px] object-cover rounded-[32px]"
-                />
-                <div
-                  className="absolute inset-0 blur-[24px] opacity-30 dark:opacity-100"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(140.528deg, rgba(59, 130, 246, 0.1) 0%, rgba(0, 0, 0, 0) 100%)",
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
+      {/* Left Content */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex flex-col gap-4 text-center lg:text-left"
+      >
+        <div>
+          <h1
+            className="font-['Playfair_Display',serif] font-bold 
+                       text-[42px] sm:text-[64px] md:text-[90px] lg:text-[120px]
+                       text-gray-900 dark:text-white mb-2 transition-colors duration-300"
+            style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
+          >
+            ALMUS
+          </h1>
+          <div className="bg-blue-500 dark:bg-[#00e5ff] h-[5px] sm:h-[6px] w-[96px] sm:w-[128px] mx-auto lg:mx-0 rounded-full shadow-lg dark:shadow-[0px_0px_20px_rgba(0,229,255,0.8)] transition-colors duration-300" />
         </div>
-      </section>
 
+        <h2 className="font-['Poppins',sans-serif] font-medium 
+                       text-[16px] sm:text-[20px] md:text-[24px]
+                       text-gray-700 dark:text-white/90 transition-colors duration-300">
+          Smart Hydration Station
+        </h2>
+
+        <p className="font-['Poppins',sans-serif] 
+                      text-[16px] sm:text-[18px] md:text-[22px]
+                      leading-relaxed text-gray-600 dark:text-white/70 transition-colors duration-300">
+          Support hydration, recovery, and performance in active environments.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
+          <button className="bg-blue-500 hover:bg-blue-600 dark:bg-[#00e5ff] dark:hover:bg-[#00d4e6] 
+                             h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full shadow-lg 
+                             hover:scale-[1.02] transition-all duration-300 
+                             font-['Poppins',sans-serif] font-semibold text-[15px] sm:text-[16px] 
+                             text-white dark:text-black">
+            Request a quote
+          </button>
+
+          <Toaster />
+
+          <button
+            onClick={handleContactClick}
+            className="bg-white/80 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 
+                       border-2 border-gray-300 dark:border-white/20 
+                       h-[48px] sm:h-[56px] px-6 sm:px-8 rounded-full 
+                       transition-all duration-300 
+                       font-['Poppins',sans-serif] font-semibold text-[15px] sm:text-[16px] 
+                       text-gray-800 dark:text-white">
+            Contact ULTIMA
+          </button>
+        </div>
+      </motion.div>
+
+      {/* Right Image */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative mt-8 lg:mt-0"
+      >
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl">
+          <img
+            src={imgImageAlmusSmartHydrationStation}
+            alt="ALMUS Smart Hydration Station"
+            className="w-full h-[220px] sm:h-[320px] md:h-[360px] lg:h-[461px] object-cover"
+          />
+          <div
+            className="absolute inset-0 blur-[24px] opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(140deg, rgba(59,130,246,0.1) 0%, rgba(0,0,0,0) 100%)",
+            }}
+          />
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
       {/* Hydration Solution Section */}
       <section className="relative min-h-[70vh] pt-20 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
         {/* Background Blurs matching the new aesthetic */}
@@ -654,10 +674,10 @@ export function AlmusPage() {
         </div>
       </section>
 
-{/* Footer */}
+ {/* Footer */}
       <footer className="bg-gray-900 dark:bg-black border-t border-gray-700 dark:border-white/10 py-12 transition-colors duration-300">
-        <div className="max-w-[1096px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="max-w-[1096px] mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             {/* Logo Column */}
             <div>
               <h3 className="font-['Arial',sans-serif] font-bold text-[20px] text-white mb-4">
