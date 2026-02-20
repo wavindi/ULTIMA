@@ -150,7 +150,7 @@ export function AlmusPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-gray-900 transition-colors duration-300">
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0A0E1A] dark:to-gray-900 transition-colors duration-300">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}
@@ -242,10 +242,10 @@ export function AlmusPage() {
         </AnimatePresence>
       </motion.nav>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910] transition-colors duration-300">
+      <section className="relative min-h-[70vh] pt-24 sm:pt-28 md:pt-32 pb-16 overflow-hidden bg-gray-50 dark:bg-[#060910]">
         {/* Background Blurs matching the new aesthetic */}
-        <div className="absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
-        <div className="absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
+        <div className="hidden md:block absolute bg-blue-400/10 blur-[120px] left-[15%] w-[500px] h-[500px] top-[10%] absolute bg-blue-400/10 dark:bg-[rgba(0,229,255,0.05)] blur-[120px] left-[15%] rounded-full w-[500px] h-[500px] top-[10%]" />
+        <div className="hidden md:block absolute bg-emerald-400/10 blur-[120px] right-[15%] w-[500px] h-[500px] top-[20%] absolute bg-emerald-400/10 dark:bg-[rgba(57,255,20,0.03)] blur-[120px] right-[15%] rounded-full w-[500px] h-[500px] top-[20%]" />
 
         <div className="max-w-[1096px] mx-auto px-4 sm:px-8 lg:px-12 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -258,7 +258,7 @@ export function AlmusPage() {
             >
               <div>
                 <h1
-                  className="font-['Playfair_Display',serif] font-bold text-[64px] sm:text-[90px] lg:text-[120px] text-gray-900 dark:text-white mb-2 transition-colors duration-300"
+                  className="font-bold text-[42px] sm:text-[64px] md:text-[90px] lg:text-[120px] font-['Playfair_Display',serif] font-bold text-[64px] sm:text-[90px] lg:text-[120px] text-gray-900 dark:text-white mb-2 transition-colors duration-300"
                   style={{ fontVariationSettings: "'opsz' 12, 'wdth' 100" }}
                 >
                   ALMUS
